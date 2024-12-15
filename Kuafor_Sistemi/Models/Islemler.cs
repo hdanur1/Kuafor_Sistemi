@@ -8,7 +8,7 @@ namespace Kuafor_Sistemi.Models
         public int IslemID { get; set; }
         public string IslemAd { get; set; }
 
-        public int Ucret { get; set; }
+        public float Ucret { get; set; }
 
         public int Sure { get; set; }
 

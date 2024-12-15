@@ -10,8 +10,9 @@ namespace Kuafor_Sistemi.Models
         public int CalisanID { get; set; }
         public int KullaniciID { get; set; }
         public int IslemID { get; set; }
-        public int TarihSaat { get; set; }
-        public int ToplamUcret { get; set; }
+        [DataType(DataType.DateTime)]
+        public DateTime TarihSaat { get; set; }
+        public float ToplamUcret { get; set; }
 
 
     }

@@ -13,9 +13,11 @@ namespace Kuafor_Sistemi.Models
 
         public string Uzmanlik { get; set; }
 
-        public int MusaitlikBaslangic { get; set; }
+        [DataType(DataType.Time)]
+        public TimeSpan MusaitlikBaslangic { get; set; }
 
-        public int  MusaitlikBitis  { get; set; }
+        [DataType(DataType.Time)]
+        public TimeSpan MusaitlikBitis { get; set; }
 
     }
 }
