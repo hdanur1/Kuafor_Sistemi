@@ -1,0 +1,59 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+
+}
+
+img{
+    max-width: 150px;
+    width: 100%;
+}
+
+.nav-link{
+    font-weight: 600;
+    color: black;
+}
+.navbar-toggler:focus{
+    box-shadow:none;
+}
+
+.dropdown>.dropdown-menu{
+    background-color: #fff;
+    border:none;
+    border-radius:0 ;
+}
+
+.lni-dashboard-square-1{
+    font-size:1.5rem ;
+}
+
+.lni-cross-circle{
+    font-size:2rem;
+}
+
+#welcome{
+    background-color: #eaeae9;
+    color: #3e4455;
+}
+
+@media (min-width:992px){
+
+    .dropdown>.dropdown-menu{
+        visibility: hidden;
+        opacity:0;
+        top:100%;
+        display: block;
+        transition: all 0.1s ease-out;
+    }
+ 
+    .dropdown:hover>.dropdown-menu{
+        padding:20px 0;
+        display: block;
+        visibility: visible;
+        opacity: 1;
+        transition:all 0.3s ease-in-out;
+    }
+}
+.dropdown-item:hover{
+    color: #fff;
+    background-color: black;
+}
