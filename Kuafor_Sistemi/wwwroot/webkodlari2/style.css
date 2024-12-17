@@ -3,15 +3,20 @@ body{
 
 }
 
-img{
-    max-width: 150px;
-    width: 100%;
-}
+
 
 .nav-link{
-    font-weight: 600;
+    font-weight:600;
     color: black;
 }
+
+.nav-link2 {
+    font-weight: 600;
+    color: black;
+    font-size:x-large;
+    text-decoration:none;
+}
+
 .navbar-toggler:focus{
     box-shadow:none;
 }
@@ -33,7 +38,61 @@ img{
 #welcome{
     background-color: #eaeae9;
     color: #3e4455;
+    height:750px;
 }
+.saloon {
+    position: relative; /* Yazý ve overlay için referans noktasý */
+    width: 100%; /* Geniþlik tüm sayfayý kaplasýn */
+    height: 75vh; /* Yükseklik, görünüm alanýnýn %70'i */
+    margin: 10px auto; /* Sayfa içinde ortalama */
+    overflow: hidden; /* Gereksiz taþmalarý engelle */
+}
+
+    .saloon img {
+        width: 100%; /* Resim geniþliði tüm kapsayýcýyý kaplasýn */
+        height: 100%; /* Resim yüksekliði kapsayýcýnýn tamamýný kaplasýn */
+        object-fit: cover; /* Resmi kapsayýcýya göre kýrp, bozulmasýný önle */
+    }
+
+.overlay {
+    position: absolute; /* Resmin üzerine eklenir */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Yarý saydam siyah bir katman */
+    z-index: 1; /* Overlay yazýnýn altýnda ama resmin üstünde */
+}
+
+.overlay-text {
+    position: absolute; /* Kapsayýcýya göre konumlandýr */
+    top: 50%; /* Yatay ortalama */
+    left: 50%; /* Dikey ortalama */
+    transform: translate(-50%, -50%); /* Tam ortalama */
+    text-align: center; /* Yazýyý ortala */
+    color: white; /* Yazý rengini beyaz yap */
+    font-size: 2rem; /* Yazý boyutu */
+    z-index: 2; /* Yazýyý overlay'in üzerine çýkar */
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8); /* Daha güçlü bir gölge */
+}
+
+    .overlay-text h1 {
+        margin: 0;
+        font-size: 5rem;
+        font-family:'Times New Roman', Times, serif;
+    }
+    .overlay-text h2 {
+        margin: 0;
+        font-size: 1.5rem;
+        
+    }
+
+    .overlay-text p {
+        font-size: 1.5rem;
+        margin-top: 10px;
+        
+    }
+
 
 @media (min-width:992px){
 
@@ -56,4 +115,42 @@ img{
 .dropdown-item:hover{
     color: #fff;
     background-color: black;
+}
+
+.hizmet .box-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(10rem,1fr));
+    gap:1.5rem;
+
+
+}
+
+.hizmet .box-container .box {
+    padding:3rem;
+    margin-top:3rem;
+    background-color:black;
+    border-radius:3rem;
+    min-height:20rem;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    color:floralwhite;
+ }
+.hizmet .box-container .box img {
+        width: 100%;
+        object-fit: cover;
+        padding-right: 5px;
+        padding-left: 5px;
+        border-radius: 1rem;
+}
+
+.hizmet .box-container .box img h3{
+        margin-top:30px;
+ }
+
+section .hizmet{
+
+    padding-left:20px;
+    padding-right:10px
+
 }
