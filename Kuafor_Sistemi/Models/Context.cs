@@ -10,16 +10,16 @@ namespace Kuafor_Sistemi.Models
             optionsBuilder.UseSqlServer("server=LAPTOP-JJBSGN9K\\SQLEXPRESS; database=DbKuafor ; integrated security=true;");
         }
 
-        public DbSet<Admin> admins { get; set; }
-        public DbSet<Calisanlar> calisanlars { get; set; }
+        public DbSet<Admin> Admins { get; set; }
+        public DbSet<Calisanlar> Calisanlars { get; set; }
 
-        public DbSet<Islemler> islemlers { get; set; }
+        public DbSet<Islemler> Islemlers { get; set; }
 
-        public DbSet<Kullanicilar> kullanicilars { get; set; }
+        public DbSet<Kullanicilar> Kullanicilars { get; set; }
 
-        public DbSet<Oneri> oneris { get; set; }
+        public DbSet<Oneri> Oneris { get; set; }
 
-        public DbSet<Randevular> randevulars { get; set; }
+        public DbSet<Randevular> Randevulars { get; set; }
 
 
     }

@@ -116,41 +116,9 @@ body{
     color: #fff;
     background-color: black;
 }
+section .Hizmet{
 
-.hizmet .box-container{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(10rem,1fr));
-    gap:1.5rem;
-
-
-}
-
-.hizmet .box-container .box {
-    padding:3rem;
-    margin-top:3rem;
-    background-color:black;
-    border-radius:3rem;
-    min-height:20rem;
-    display:flex;
-    flex-direction:column;
-    align-items:flex-start;
-    color:floralwhite;
- }
-.hizmet .box-container .box img {
-        width: 100%;
-        object-fit: cover;
-        padding-right: 5px;
-        padding-left: 5px;
-        border-radius: 1rem;
-}
-
-.hizmet .box-container .box img h3{
-        margin-top:30px;
- }
-
-section .hizmet{
-
-    padding-left:20px;
-    padding-right:10px
+    margin-left:10px;
+    margin-right:10px;
 
 }

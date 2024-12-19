@@ -19,5 +19,6 @@ namespace Kuafor_Sistemi.Models
         [DataType(DataType.Time)]
         public TimeSpan MusaitlikBitis { get; set; }
 
+        public List<Randevular> randevulars { get; set; }
     }
 }

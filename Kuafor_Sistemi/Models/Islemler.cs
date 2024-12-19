@@ -12,5 +12,7 @@ namespace Kuafor_Sistemi.Models
 
         public int Sure { get; set; }
 
+        public List<Randevular> randevulars { get; set; }
+
     }
 }

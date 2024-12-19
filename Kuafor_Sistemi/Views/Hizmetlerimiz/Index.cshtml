@@ -6,84 +6,38 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@foreach(var x in Model){
-<section class="hizmet">
-    
-    <h1>Hizmetlerimiz</h1>
-        <div class="box-container">
-             <div class="box">
-                <div class="box-head">
-                    <img src="~/webkodlari2/resimler/sackesim.jpg" />
-                    <span class="hizmet-category">  </span>
-                    <h3></h3>
-                    <div class="price"> 200 TL</div>
-                </div>    
-             </div>
-             <div class="box">
-                <div class="box-head">
-                <img src="~/webkodlari2/resimler/sacboyama.jpg" />
-                    <span class="hizmet-category">  </span>
-                    <h3>Saç Boyama</h3>
-                    <div class="price"> 200 TL</div>
-                </div>        
-             </div>
-             <div class="box">
-                <div class="box-head">
-                <img src="~/webkodlari2/resimler/sacbakim.jpg" />
-                    <span class="hizmet-category">  </span>
-                    <h3>Saç Bakım</h3>
-                    <div class="price"> 200 TL</div>
-                </div>        
-             </div>
-             <div class="box">
-                 <div class="box-head">
-                <img src="~/webkodlari2/resimler/gelinsaci.jpg" />
-                     <span class="hizmet-category">  </span>
-                     <h3>Gelin Saçı</h3>
-                     <div class="price"> 200 TL</div>
-                 </div>
+<section class="Hizmet">
+    <h2>Hizmetlerimiz</h2>
 
-             </div>
+    <table class="table table-bordered">
 
+        <tr>
+            <th>İşlem No </th>
+            <th>İşlem Adı</th>
+            <th>Ücret</th>
+            <th>Süre</th>
+        </tr>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.IslemID</td>
+                <td>@x.IslemAd</td>
+                <td>@x.Ucret</td>
+                <td>@x.Sure dakika</td>
 
-        </div>
-    <div class="box-container">
-        <div class="box">
-            <div class="box-head">
-                <img src="~/webkodlari2/resimler/nisansaci.jpg" />
-                <span class="hizmet-category">  </span>
-                <h3>Nişan Saçı</h3>
-                <div class="price"> 200 TL</div>
-            </div>
-        </div>
-        <div class="box">
-            <div class="box-head">
-                <img src="~/webkodlari2/resimler/ombre.jpg" />
-                <span class="hizmet-category">  </span>
-                <h3>Ombre</h3>
-                <div class="price"> 200 TL</div>
-            </div>
-        </div>
-        <div class="box">
-            <div class="box-head">
-                <img src="~/webkodlari2/resimler/rofle.jpg" />
-                <span class="hizmet-category">  </span>
-                <h3>Röfle</h3>
-                <div class="price"> 200 TL</div>
-            </div>
-        </div>
-        <div class="box">
-            <div class="box-head">
-                <img src="~/webkodlari2/resimler/makyaj.jpg" />
-                <span class="hizmet-category">  </span>
-                <h3>Makyaj</h3>
-                <div class="price"> 200 TL</div>
-            </div>
+            </tr>
 
-        </div>
+        }
 
-
-    </div>
+    </table>
 
 </section>
-}
+
+
+
+
+
+
+
+
+
