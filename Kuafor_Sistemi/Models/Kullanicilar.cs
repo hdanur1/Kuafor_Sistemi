@@ -11,7 +11,9 @@ namespace Kuafor_Sistemi.Models
         public string Email { get; set; }
         public string Sifre { get; set; }
 
-        public List<Randevular> randevulars { get; set; }
-        public List<Oneri> oneris { get; set; }
+        public bool IsAdmin { get; set; }
+
+        public List<Randevular> Randevulars { get; set; }
+        public List<Oneri> Oneris { get; set; }
     }
 }

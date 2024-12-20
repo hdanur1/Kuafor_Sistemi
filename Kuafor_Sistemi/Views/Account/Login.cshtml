@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="~/webkdlari3/style.css">
+</head>
+<body>
+
+
+
+<div class="form-structor">
+    <div class="login">
+        <div class="center">
+            <h2 class="form-title" id="login"><span>or</span>Log in</h2>
+            <form method="post">
+                <div class="form-holder">
+                    <input type="email" name="email" class="input" placeholder="Email" required />
+                    <input type="password" name="password" class="input" placeholder="Password" required />
+                </div>
+                <button type="submit" class="submit-btn">Log in</button>
+            </form>
+            <a href="@Url.Action("Register", "Account")">Don't have an account? Sign up</a>
+        </div>
+    </div>
+</div>
+
+
+    <script src="~/webkodlari3/jskodlari.js"></script>
+</body>
+</html>

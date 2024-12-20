@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Kuafor_Sistemi.Migrations
 {
-    public partial class kuafor : Migration
+    public partial class mig1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "admins",
+                name: "Admins",
                 columns: table => new
                 {
                     AdminID = table.Column<int>(type: "int", nullable: false)
@@ -20,11 +20,11 @@ namespace Kuafor_Sistemi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_admins", x => x.AdminID);
+                    table.PrimaryKey("PK_Admins", x => x.AdminID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "calisanlars",
+                name: "Calisanlars",
                 columns: table => new
                 {
                     CalisanID = table.Column<int>(type: "int", nullable: false)
@@ -37,11 +37,11 @@ namespace Kuafor_Sistemi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_calisanlars", x => x.CalisanID);
+                    table.PrimaryKey("PK_Calisanlars", x => x.CalisanID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "islemlers",
+                name: "Islemlers",
                 columns: table => new
                 {
                     IslemID = table.Column<int>(type: "int", nullable: false)
@@ -52,11 +52,11 @@ namespace Kuafor_Sistemi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_islemlers", x => x.IslemID);
+                    table.PrimaryKey("PK_Islemlers", x => x.IslemID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "kullanicilars",
+                name: "Kullanicilars",
                 columns: table => new
                 {
                     KullaniciID = table.Column<int>(type: "int", nullable: false)
@@ -68,62 +68,70 @@ namespace Kuafor_Sistemi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_kullanicilars", x => x.KullaniciID);
+                    table.PrimaryKey("PK_Kullanicilars", x => x.KullaniciID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "oneris",
-                columns: table => new
-                {
-                    OneriID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    KullaniciID = table.Column<int>(type: "int", nullable: false),
-                    FotoURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    OneriMetni = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Tarih = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_oneris", x => x.OneriID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "randevulars",
+                name: "Randevulars",
                 columns: table => new
                 {
                     RandevuID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CalisanID = table.Column<int>(type: "int", nullable: false),
-                    KullaniciID = table.Column<int>(type: "int", nullable: false),
-                    IslemID = table.Column<int>(type: "int", nullable: false),
                     TarihSaat = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ToplamUcret = table.Column<float>(type: "real", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_randevulars", x => x.RandevuID);
+                    table.PrimaryKey("PK_Randevulars", x => x.RandevuID);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Oneris",
+                columns: table => new
+                {
+                    OneriID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FotoURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    OneriMetni = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Tarih = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    KullaniciID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Oneris", x => x.OneriID);
+                    table.ForeignKey(
+                        name: "FK_Oneris_Kullanicilars_KullaniciID",
+                        column: x => x.KullaniciID,
+                        principalTable: "Kullanicilars",
+                        principalColumn: "KullaniciID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Oneris_KullaniciID",
+                table: "Oneris",
+                column: "KullaniciID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "admins");
+                name: "Admins");
 
             migrationBuilder.DropTable(
-                name: "calisanlars");
+                name: "Calisanlars");
 
             migrationBuilder.DropTable(
-                name: "islemlers");
+                name: "Islemlers");
 
             migrationBuilder.DropTable(
-                name: "kullanicilars");
+                name: "Oneris");
 
             migrationBuilder.DropTable(
-                name: "oneris");
+                name: "Randevulars");
 
             migrationBuilder.DropTable(
-                name: "randevulars");
+                name: "Kullanicilars");
         }
     }
 }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kuafor_Sistemi.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20241219135006_oneriyeni")]
-    partial class oneriyeni
+    [Migration("20241219184739_migration4")]
+    partial class migration4
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,7 +42,7 @@ namespace Kuafor_Sistemi.Migrations
 
                     b.HasKey("AdminID");
 
-                    b.ToTable("admins");
+                    b.ToTable("Admins");
                 });
 
             modelBuilder.Entity("Kuafor_Sistemi.Models.Calisanlar", b =>
@@ -73,7 +73,7 @@ namespace Kuafor_Sistemi.Migrations
 
                     b.HasKey("CalisanID");
 
-                    b.ToTable("calisanlars");
+                    b.ToTable("Calisanlars");
                 });
 
             modelBuilder.Entity("Kuafor_Sistemi.Models.Islemler", b =>
@@ -96,7 +96,7 @@ namespace Kuafor_Sistemi.Migrations
 
                     b.HasKey("IslemID");
 
-                    b.ToTable("islemlers");
+                    b.ToTable("Islemlers");
                 });
 
             modelBuilder.Entity("Kuafor_Sistemi.Models.Kullanicilar", b =>
@@ -125,7 +125,7 @@ namespace Kuafor_Sistemi.Migrations
 
                     b.HasKey("KullaniciID");
 
-                    b.ToTable("kullanicilars");
+                    b.ToTable("Kullanicilars");
                 });
 
             modelBuilder.Entity("Kuafor_Sistemi.Models.Oneri", b =>
@@ -140,6 +140,9 @@ namespace Kuafor_Sistemi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("KullaniciID")
+                        .HasColumnType("int");
+
                     b.Property<string>("OneriMetni")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -149,7 +152,9 @@ namespace Kuafor_Sistemi.Migrations
 
                     b.HasKey("OneriID");
 
-                    b.ToTable("oneris");
+                    b.HasIndex("KullaniciID");
+
+                    b.ToTable("Oneris");
                 });
 
             modelBuilder.Entity("Kuafor_Sistemi.Models.Randevular", b =>
@@ -177,7 +182,68 @@ namespace Kuafor_Sistemi.Migrations
 
                     b.HasKey("RandevuID");
 
-                    b.ToTable("randevulars");
+                    b.HasIndex("CalisanID");
+
+                    b.HasIndex("IslemID");
+
+                    b.HasIndex("KullaniciID");
+
+                    b.ToTable("Randevulars");
+                });
+
+            modelBuilder.Entity("Kuafor_Sistemi.Models.Oneri", b =>
+                {
+                    b.HasOne("Kuafor_Sistemi.Models.Kullanicilar", "Kullanici")
+                        .WithMany("Oneris")
+                        .HasForeignKey("KullaniciID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Kullanici");
+                });
+
+            modelBuilder.Entity("Kuafor_Sistemi.Models.Randevular", b =>
+                {
+                    b.HasOne("Kuafor_Sistemi.Models.Calisanlar", "Calisan")
+                        .WithMany("Randevulars")
+                        .HasForeignKey("CalisanID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Kuafor_Sistemi.Models.Islemler", "Islem")
+                        .WithMany("Randevulars")
+                        .HasForeignKey("IslemID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Kuafor_Sistemi.Models.Kullanicilar", "Kullanici")
+                        .WithMany("Randevulars")
+                        .HasForeignKey("KullaniciID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Calisan");
+
+                    b.Navigation("Islem");
+
+                    b.Navigation("Kullanici");
+                });
+
+            modelBuilder.Entity("Kuafor_Sistemi.Models.Calisanlar", b =>
+                {
+                    b.Navigation("Randevulars");
+                });
+
+            modelBuilder.Entity("Kuafor_Sistemi.Models.Islemler", b =>
+                {
+                    b.Navigation("Randevulars");
+                });
+
+            modelBuilder.Entity("Kuafor_Sistemi.Models.Kullanicilar", b =>
+                {
+                    b.Navigation("Oneris");
+
+                    b.Navigation("Randevulars");
                 });
 #pragma warning restore 612, 618
         }
