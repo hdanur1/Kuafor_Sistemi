@@ -1,14 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-using Microsoft.AspNetCore.Http;
-using Kuafor_Sistemi.Models;
-using Kuafor_Sistemi.Data;
+﻿using Kuafor_Sistemi.Models;
+using Microsoft.AspNetCore.Mvc;
 
 public class AccountController : Controller
 {
-    private readonly ApplicationDbContext _context;
+    private readonly Context _context;
 
-    public AccountController(ApplicationDbContext context)
+    public AccountController(Context context)
     {
         _context = context;
     }
@@ -22,7 +19,7 @@ public class AccountController : Controller
     [HttpPost]
     public IActionResult Login(string email, string password)
     {
-        var kullanici = _context.Kullanicilar.SingleOrDefault(u => u.Email == email && u.Sifre == password);
+        var kullanici = _context.Kullanicilars.SingleOrDefault(u => u.Email == email && u.Sifre == password);
         if (kullanici != null)
         {
             HttpContext.Session.SetString("KullaniciID", kullanici.KullaniciID.ToString());
@@ -49,7 +46,7 @@ public class AccountController : Controller
     public IActionResult Register(Kullanicilar kullanici)
     {
         kullanici.IsAdmin = false; // Yeni kullanıcılar admin olmayacak.
-        _context.Kullanicilar.Add(kullanici);
+        _context.Kullanicilars.Add(kullanici);
         _context.SaveChanges();
 
         return RedirectToAction("Login");

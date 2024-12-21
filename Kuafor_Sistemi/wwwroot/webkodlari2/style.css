@@ -1,6 +1,14 @@
-body{
+body {
     font-family: 'Courier New', Courier, monospace;
+    padding-top: 70px; /* Navbarýn içeriði kapatmamasý için */
+}
 
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1030;
+    background-color: white; /* Arka planýn görünür olmasý için */
 }
 
 
