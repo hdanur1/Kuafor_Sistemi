@@ -25,6 +25,13 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     });
 
 
+// Session özelliði ekleniyor
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Oturum süresi
+    options.Cookie.HttpOnly = true; // Çerezlere yalnýzca HTTP üzerinden eriþilebilir
+    options.Cookie.IsEssential = true; // GDPR uyumluluðu için gerekli
+});
 // MVC'yi ekliyoruz
 builder.Services.AddControllersWithViews();
 
@@ -42,7 +49,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseSession(); // Session middleware
 app.UseAuthorization();
 app.UseAuthentication(); // Kimlik doðrulama
 

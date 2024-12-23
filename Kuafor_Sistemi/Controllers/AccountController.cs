@@ -17,9 +17,9 @@ public class AccountController : Controller
     }
 
     [HttpPost]
-    public IActionResult Login(string email, string password)
+    public IActionResult Login(string Email, string Sifre)
     {
-        var kullanici = _context.Kullanicilars.SingleOrDefault(u => u.Email == email && u.Sifre == password);
+        var kullanici = _context.Kullanicilars.SingleOrDefault(u => u.Email == Email && u.Sifre == Sifre);
         if (kullanici != null)
         {
             HttpContext.Session.SetString("KullaniciID", kullanici.KullaniciID.ToString());

@@ -7,7 +7,6 @@ namespace Kuafor_Sistemi.Models
         [Key]
         public int KullaniciID { get; set; }
         public string KullaniciAd { get; set; }
-        public string KullaniciSoyad { get; set; }
         public string Email { get; set; }
         public string Sifre { get; set; }
 
