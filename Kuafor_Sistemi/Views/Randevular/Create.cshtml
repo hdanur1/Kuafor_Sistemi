@@ -1,0 +1,39 @@
+﻿@using Kuafor_Sistemi.Models
+@model Randevular
+
+@{
+    ViewData["Title"] = "Randevu Al";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Randevu Al</h2>
+<form method="post">
+    <div class="mb-3">
+        <label for="IslemID" class="form-label">İşlem</label>
+        <select id="IslemID" name="IslemID" class="form-select" required>
+            <option value="">Seçiniz...</option>
+            @foreach (var islem in ViewBag.Islemler)
+            {
+                <option value="@islem.IslemID">@islem.IslemAd </option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="CalisanID" class="form-label">Kuaför</label>
+        <select id="CalisanID" name="CalisanID" class="form-select" required>
+            <option value="">Seçiniz...</option>
+            @foreach (var calisan in ViewBag.Calisanlar)
+            {
+                <option value="@calisan.CalisanID">@calisan.CalisanAd @calisan.CalisanSoyad - @calisan.Uzmanlik</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="TarihSaat" class="form-label">Tarih ve Saat</label>
+        <input type="datetime-local" id="TarihSaat" name="TarihSaat" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Randevu Al</button>
+</form>

@@ -14,12 +14,15 @@ namespace Kuafor_Sistemi.Controllers
             _context = context;
         }
 
-        [Authorize]
+      
         public IActionResult Index()
         {
             // Context kullanılarak veritabanından veriler çekiliyor.
             var degerler = _context.Islemlers.ToList();
             return View(degerler);
         }
+
+
+
     }
 }
