@@ -1,0 +1,41 @@
+﻿@model List<Kuafor_Sistemi.Models.Islemler>
+
+@{
+    ViewData["Title"] = "Hizmetler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Hizmet Yönetimi</h2>
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>İşlem No</th>
+            <th>İşlem Adı</th>
+            <th>Ücret</th>
+            <th>Süre</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var hizmet in Model)
+        {
+            <tr>
+                <td>@hizmet.IslemID</td>
+                <td>@hizmet.IslemAd</td>
+                <td>@hizmet.Ucret TL</td>
+                <td>@hizmet.Sure dakika</td>
+                <td>
+                    <a href="@Url.Action("HizmetGuncelle", "Admin", new { id = hizmet.IslemID })" class="btn btn-warning">Güncelle</a>
+                    <form method="post" action="@Url.Action("HizmetSil", "Admin", new { id = hizmet.IslemID })" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Sil</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+<a href="@Url.Action("HizmetEkle", "Admin")" class="btn btn-primary">Yeni Hizmet Ekle</a>
+<a href="@Url.Action("Index", "Admin")" class="btn btn-info">Gelen Mesajlar</a>

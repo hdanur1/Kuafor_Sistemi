@@ -19,19 +19,25 @@
 <div class="form-structor">
     <div class="login">
         <div class="center">
-            <h2 class="form-title" id="login"><span>or</span>Log in</h2>
-            <form method="post">
-                <div class="form-holder">
-                    <input type="email" name="Email" class="input" placeholder="Email" required />
-                    <input type="password" name="Sifre" class="input" placeholder="Sifre" required />
-                </div>
-                <button type="submit" class="submit-btn">Log in</button>
-            </form>
-            <a href="@Url.Action("Register", "Account")" class="a-login">Don't have an account? Sign up</a>
+            <h2 class="form-title" id="login"><span>or</span>Giriş Yap</h2>
+                <form method="post">
+                    <input type="hidden" name="ReturnUrl" value="@ViewData["ReturnUrl"]" />
+                    <div class="form-holder">
+                        <input type="email" name="Email" class="input" placeholder="Email" required />
+                        <input type="password" name="Sifre" class="input" placeholder="Şifre" required />
+                    </div>
+                    <button type="submit" class="submit-btn">Log in</button>
+                </form>
+
+            <a href="@Url.Action("Register", "Account")" class="a-login">Hesabın Yok mu? Kayıt ol</a>
         </div>
     </div>
 </div>
 
+    @if (ViewBag.Error != null)
+    {
+        <p class="text-danger">@ViewBag.Error</p>
+    }
 
     <script src="~/webkodlari3/jskodlari.js"></script>
 </body>

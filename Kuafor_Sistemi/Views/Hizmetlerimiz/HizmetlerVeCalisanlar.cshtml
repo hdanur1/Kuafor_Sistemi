@@ -1,0 +1,49 @@
+﻿@using Kuafor_Sistemi.Models
+@model HizmetlerCalisanlarViewModel
+
+@{
+    ViewData["Title"] = "Hizmetler ve Çalışan Bilgileri";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="Hizmetler">
+    <h2>Hizmetlerimiz</h2>
+
+    <table class="table table-bordered">
+        <tr>
+            <th>İşlem No</th>
+            <th>İşlem Adı</th>
+            <th>Ücret</th>
+            <th>Süre</th>
+        </tr>
+        @foreach (var hizmet in Model.Islemler)
+        {
+            <tr>
+                <td>@hizmet.IslemID</td>
+                <td>@hizmet.IslemAd</td>
+                <td>@hizmet.Ucret</td>
+                <td>@hizmet.Sure dakika</td>
+            </tr>
+        }
+    </table>
+</section>
+
+<section class="Calisanlar mt-5">
+    <h2>Çalışan Bilgileri</h2>
+
+    <table class="table table-bordered">
+        <tr>
+            <th>Çalışan Adı-Soyadı</th>
+            <th>Uzmanlık</th>
+            <th>Müsait Zamanlar</th>
+        </tr>
+        @foreach (var calisan in Model.Calisanlar)
+        {
+            <tr>
+                <td>@calisan.CalisanAd @calisan.CalisanSoyad</td>
+                <td>@calisan.Uzmanlik</td>
+                <td>@calisan.MusaitlikBaslangic - @calisan.MusaitlikBitis</td>
+            </tr>
+        }
+    </table>
+</section>

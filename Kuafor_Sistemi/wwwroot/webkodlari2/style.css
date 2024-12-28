@@ -2,6 +2,11 @@ body {
     font-family: 'Courier New', Courier, monospace;
     padding-top: 70px; /* Navbarýn içeriði kapatmamasý için */
 }
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
 
 .navbar {
     position: fixed;

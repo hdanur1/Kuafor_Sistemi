@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container py-5">
+    <h2 class="text-center mb-4">Bizimle İletişime Geçin</h2>
+    <form action="/Iletisim/Submit" method="post" class="row g-3">
+        <div class="col-md-6">
+            <label for="name" class="form-label">Adınız</label>
+            <input type="text" class="form-control" id="name" name="Name" placeholder="Adınızı girin" required>
+        </div>
+        <div class="col-md-6">
+            <label for="email" class="form-label">E-posta</label>
+            <input type="email" class="form-control" id="email" name="Email" placeholder="E-posta adresinizi girin" required>
+        </div>
+        <div class="col-12">
+            <label for="subject" class="form-label">Konu</label>
+            <input type="text" class="form-control" id="subject" name="Subject" placeholder="Konu başlığını girin" required>
+        </div>
+        <div class="col-12">
+            <label for="message" class="form-label">Mesajınız</label>
+            <textarea class="form-control" id="message" name="Message" rows="5" placeholder="Mesajınızı yazın" required></textarea>
+        </div>
+        <div class="col-12 text-center">
+            <button type="submit" class="btn btn-primary">Gönder</button>
+        </div>
+    </form>
+</div>
+

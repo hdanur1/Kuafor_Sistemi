@@ -15,5 +15,7 @@ namespace Kuafor_Sistemi.Models
         public DbSet<Kullanicilar> Kullanicilars { get; set; }
         public DbSet<Oneri> Oneris { get; set; }
         public DbSet<Randevular> Randevulars { get; set; }
+
+        public DbSet<Iletisim> Iletisims { get; set;}
     }
 }

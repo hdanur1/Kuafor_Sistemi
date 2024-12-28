@@ -1,0 +1,18 @@
+﻿@model Kuafor_Sistemi.Models.Islemler
+
+@{
+    ViewData["Title"] = "HizmetEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Yeni Hizmet Ekle</h2>
+
+<form class="form-group" method="post">
+    @Html.LabelFor(x=>x.IslemAd)
+    @Html.TextBoxFor(x=>x.IslemAd, new{ @class ="form-control"}  )
+    @Html.LabelFor(x=>x.Ucret)
+    @Html.TextBoxFor(x=>x.Ucret, new{ @class ="form-control"}  )
+    @Html.LabelFor(x=>x.Sure)
+    @Html.TextBoxFor(x=>x.Sure, new{ @class ="form-control"}  )
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+
+</form>

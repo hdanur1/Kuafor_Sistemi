@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Mvc;
 using Kuafor_Sistemi.Models;
 using Microsoft.AspNetCore.Authorization;
 
@@ -14,15 +15,18 @@ namespace Kuafor_Sistemi.Controllers
             _context = context;
         }
 
-      
-        public IActionResult Index()
+        public IActionResult HizmetlerVeCalisanlar()
         {
-            // Context kullanılarak veritabanından veriler çekiliyor.
-            var degerler = _context.Islemlers.ToList();
-            return View(degerler);
+            var model = new HizmetlerCalisanlarViewModel
+            {
+                Islemler = _context.Islemlers.ToList(),
+                Calisanlar = _context.Calisanlars.ToList()
+            };
+
+            return View(model);
         }
 
-
-
+  
+      
     }
 }

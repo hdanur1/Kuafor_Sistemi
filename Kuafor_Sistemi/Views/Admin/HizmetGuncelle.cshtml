@@ -1,0 +1,24 @@
+﻿@model Kuafor_Sistemi.Models.Islemler
+
+@{
+    ViewData["Title"] = "HizmetGuncelle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Hizmet Güncelle</h2>
+
+<form method="post" action="@Url.Action("HizmetGuncelle", "Admin")">
+    <input type="hidden" name="IslemID" value="@Model.IslemID" />
+    <div class="mb-3">
+        <label for="IslemAd" class="form-label">Hizmet Adı</label>
+        <input type="text" class="form-control" id="IslemAd" name="IslemAd" value="@Model.IslemAd" required>
+    </div>
+    <div class="mb-3">
+        <label for="Ucret" class="form-label">Ücret</label>
+        <input type="number" class="form-control" id="Ucret" name="Ucret" value="@Model.Ucret" required>
+    </div>
+    <div class="mb-3">
+        <label for="Sure" class="form-label">Süre (dakika)</label>
+        <input type="number" class="form-control" id="Sure" name="Sure" value="@Model.Sure" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+</form>

@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Kuafor_Sistemi.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Kuafor_Sistemi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,9 +31,16 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true; // GDPR uyumluluðu için gerekli
 });
 
+
 // MVC'yi ekliyoruz
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddScoped<KullaniciService>();
+builder.Services.AddAuthentication("CookieAuthentication")
+    .AddCookie("CookieAuthentication", options =>
+    {
+        options.LoginPath = "/Account/Login";
+        options.AccessDeniedPath = "/Account/AccessDenied";
+    });
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
@@ -51,21 +59,22 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
     });
 }
 
-// ** Doðru middleware sýralamasý **
-app.UseRouting(); // UseRouting middleware, UseEndpoints'ten önce çaðrýlmalý
 
-app.UseAuthentication(); // Kimlik doðrulama
-app.UseAuthorization(); // Yetkilendirme
-app.UseSession(); // Session middleware
 
-app.UseStaticFiles(); // Statik dosyalar için middleware
+app.UseRouting(); // Yönlendirme middleware'i
+
+app.UseAuthentication(); // Kimlik doðrulama middleware'i
+app.UseAuthorization(); // Yetkilendirme middleware'i, authentication'dan sonra gelir
+
+app.UseSession(); // Oturum middleware'i
+
+app.UseStaticFiles(); // Statik dosyalar middleware'i
 
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers(); // API controller'lar için
     endpoints.MapDefaultControllerRoute(); // MVC rotalarý için
 });
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
