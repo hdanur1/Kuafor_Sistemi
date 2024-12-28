@@ -1,4 +1,4 @@
-Proje Hakkında Kısa Açıklama 
+Proje Hakkında Kısa Açıklama :
 Bu projede, ASP.NET Core MVC kullanarak Kuaför/Güzellik salonu(bayanlar) için bir kuaför işletme yönetim uygulaması geliştirilmesi hedeflenmektedir.Sistem, salonların sunduğu işlemleri, bu işlemlerin süre ve 
 ücretlerini, çalışanların uzmanlık alanlarını ve müsaitlik durumlarını tanımlayacak; kullanıcıların, uygun çalışanlardan randevu alabilecekleri nitelikte olacaktır. Bu sayede  çalışanların verimliliği ve günlük kazançları 
 izlenebilecektir. Projenin bir böülümünde veri tabanı ile haberleşmede REST API kullanılacak ve yapay zeka entegrasyonu sayesinde kullanıcılar fotoğraf yükleyerek saç modeli veya renk önerileri alabileceklerdir.
